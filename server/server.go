@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/ahmadhabibi14/gnet-starter/protocol"
 	"github.com/panjf2000/gnet/v2"
 	"github.com/panjf2000/gnet/v2/pkg/logging"
 )
@@ -56,7 +55,6 @@ func (s *Server) OnClose(c gnet.Conn, err error) (action gnet.Action) {
 
 
 func (s *Server) OnOpen(c gnet.Conn) (out []byte, action gnet.Action) {
-	c.SetContext(new(protocol.SimpleCodec))
 	atomic.AddInt32(&s.connected, 1)
 	out = []byte("sweetness\r\n")
 	return
